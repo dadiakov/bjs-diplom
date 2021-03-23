@@ -25,34 +25,27 @@ const moneyManager = new MoneyManager();
 moneyManager.addMoneyCallback = (data) => {
     ApiConnector.addMoney(data, response => {
         response.success && ProfileWidget.showProfile(response.data);
-        if (response.success) { 
-            moneyManager.setMessage(response.success, 'Пополнение прошло успешно!');
-        } else {
-            moneyManager.setMessage(response.success, response.error);
-        }
-
+        let message = '';
+        response.success ? message = 'Пополнение прошло успешно!': message = response.error;
+        moneyManager.setMessage(response.success, message);
     });
 };
 
 moneyManager.conversionMoneyCallback = (data) => {
     ApiConnector.convertMoney(data, response => {
         response.success && ProfileWidget.showProfile(response.data);
-        if (response.success) { 
-            moneyManager.setMessage(response.success, 'Конвертация прошла успешно!');
-        } else {
-            moneyManager.setMessage(response.success, response.error);
-        }
+        let message = '';
+        response.success ? message = 'Конвертация прошла успешно!': message = response.error;
+        moneyManager.setMessage(response.success, message);
     });
 };
 
 moneyManager.sendMoneyCallback = (data) => {
     ApiConnector.transferMoney(data, response => {
         response.success && ProfileWidget.showProfile(response.data);
-        if (response.success) { 
-            moneyManager.setMessage(response.success, 'Перевод прошел успешно!');
-        } else {
-            moneyManager.setMessage(response.success, response.error);
-        }
+        let message = '';
+        response.success ? message = 'Перевод прошел успешно!': message = response.error;
+        moneyManager.setMessage(response.success, message);
     });
 };
 
