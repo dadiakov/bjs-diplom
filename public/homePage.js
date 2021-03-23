@@ -26,8 +26,7 @@ moneyManager.addMoneyCallback = (data) => {
     ApiConnector.addMoney(data, response => {
         response.success && ProfileWidget.showProfile(response.data);
         let message = '';
-        response.success ? message = 'Пополнение прошло успешно!': message = response.error;
-        moneyManager.setMessage(response.success, message);
+        moneyManager.setMessage(response.success, message = response.success ? 'Пополнение прошло успешно!': response.error);
     });
 };
 
@@ -35,8 +34,7 @@ moneyManager.conversionMoneyCallback = (data) => {
     ApiConnector.convertMoney(data, response => {
         response.success && ProfileWidget.showProfile(response.data);
         let message = '';
-        response.success ? message = 'Конвертация прошла успешно!': message = response.error;
-        moneyManager.setMessage(response.success, message);
+        moneyManager.setMessage(response.success, message = response.success ? 'Конвертация прошла успешно!': response.error);
     });
 };
 
@@ -44,8 +42,7 @@ moneyManager.sendMoneyCallback = (data) => {
     ApiConnector.transferMoney(data, response => {
         response.success && ProfileWidget.showProfile(response.data);
         let message = '';
-        response.success ? message = 'Перевод прошел успешно!': message = response.error;
-        moneyManager.setMessage(response.success, message);
+        moneyManager.setMessage(response.success, message = response.success ? 'Перевод прошел успешно!': response.error);
     });
 };
 
